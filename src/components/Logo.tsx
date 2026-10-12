@@ -1,1 +1,14 @@
-export function Logo() { return <span className="logo"><span className="logo-mark" aria-hidden="true">Z<span>×</span></span><span>ZET X<span className="logo-sub">SOLUTIONS</span></span></span>; }
+import './Logo.css';
+
+export function Logo({ variant = 'header' }: { variant?: 'header' | 'footer' }) {
+  const footer = variant === 'footer';
+  return (
+    <img
+      className={`brand-logo brand-logo--${variant}`}
+      src={`/assets/${footer ? 'zetx-logo-horizontal' : 'zetx-logo-header'}.svg`}
+      width={footer ? 440 : 350}
+      height={footer ? 110 : 100}
+      alt="ZET X SOLUTIONS"
+    />
+  );
+}

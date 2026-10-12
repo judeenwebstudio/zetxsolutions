@@ -1,0 +1,11 @@
+.brand-logo {
+  display: block;
+  width: 152.25px;
+  height: 43.5px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.brand-logo--footer {
+  width: 114px;
+  height: 28.5px;
+}
