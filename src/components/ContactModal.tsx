@@ -32,6 +32,11 @@ export function ContactModal() {
       startedAt.current = Date.now();
       setError(''); setFieldErrors({}); setStatus(contact.emailjsConfigured ? 'ready' : 'unavailable');
       form.current?.reset();
+      const selectedService = anchor.dataset.contactService;
+      const serviceSelect = form.current?.elements.namedItem('service');
+      if (serviceSelect instanceof HTMLSelectElement && company.services.some(service => service.title === selectedService)) {
+        serviceSelect.value = selectedService!;
+      }
       dialog.current.showModal();
     };
     document.addEventListener('click', open);
