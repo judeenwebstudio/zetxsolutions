@@ -24,3 +24,11 @@ Run npm run typecheck, npm run build and node --test tests/contact.test.mjs. No 
 After deployment, submit one clearly labelled production test enquiry, confirm EmailJS acceptance and check receipt in the recipient Gmail inbox. Acceptance alone is not proof of inbox delivery. Until Gmail receipt is confirmed, delivery is unverified. No private key is needed or permitted in source or VITE_ variables.
 
 SDK reference: https://www.emailjs.com/docs/sdk/send/
+
+## Production 404 investigation (2026-10-12)
+
+The deployed build contained the supplied service_dj82mhm and template_n7pzenl and a nonempty 17-character public key without whitespace. The official API returned HTTP 404 with the exact body `Account not found`. The installed official SDK uses the documented endpoint and argument order. This evidence identifies an unrecognized account/public key; it does not establish that Gmail OAuth, template existence or origin permissions are faulty. Service/template validity within the correct account cannot be verified until its valid public key is configured.
+
+Replace VITE_EMAILJS_PUBLIC_KEY in Vercel Production using the Public Key from the account owning both IDs. Do not use an account ID, service ID, template ID or private key. Redeploy so Vite rebuilds the frontend. Changing the environment without rebuilding will leave the old value in the bundle. This repository cannot correct an account setting without the valid value or authenticated Vercel access.
+
+Failures now emit only a numeric status and allowlisted diagnostic code, never raw provider text, public/private keys or form contents. ACCOUNT_NOT_FOUND specifically identifies the observed response; ACCESS_REJECTED for 403 does not assume an origin restriction without provider evidence. A labelled production test and actual Gmail receipt remain necessary after configuration is corrected.

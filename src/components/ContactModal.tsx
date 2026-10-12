@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import emailjs from '@emailjs/browser';
-import { sendEnquiry } from '../lib/sendEnquiry';
+import { sendEnquiry, emailJSDiagnostic } from '../lib/sendEnquiry';
 import { motion, useReducedMotion } from 'motion/react';
 import { X, MessageCircle, Mail, ArrowUpRight } from 'lucide-react';
 import { company } from '../config/company';
@@ -59,10 +59,10 @@ export function ContactModal() {
       setStatus('success'); form.current?.reset();
     } catch (failure) {
       setStatus('ready');
-      const statusCode = (failure as { status?: number })?.status;
-      setError(statusCode === 429
-        ? 'Too many enquiries. Please wait a moment and try again, or use WhatsApp or email.'
-        : 'Your enquiry could not be confirmed. Please try again later or use WhatsApp or email.');
+      const diagnostic = emailJSDiagnostic(failure);
+      console.warn('[ZET X contact]', { status: diagnostic.status, code: diagnostic.code });
+      setError(diagnostic.message);
+
     } finally { sending.current = false; }
   }
 
