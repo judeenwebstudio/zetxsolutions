@@ -6,7 +6,7 @@ export const about = {
   vision: 'Our vision is to help create a future where the right connections give businesses and professionals more opportunities to grow.',
   leadership: [
     { name: 'Jegan', title: 'CEO', email: 'jagansada123@gmail.com', initial: 'J' },
-    { name: 'Hema', title: 'HR Manager', email: 'hemamanickam66@gmail.com', initial: 'H' },
+    { name: 'Hemalatha Manickam', title: 'HR Manager', email: 'hemamanickam66@gmail.com', initial: 'H' },
   ],
   values: [
     { title: 'Integrity', description: 'Communicate clearly, act honestly and approach every conversation with respect.' },
