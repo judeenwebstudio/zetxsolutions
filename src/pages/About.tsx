@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { ArrowUpRight, Target, Telescope, ShieldCheck, Sparkles, Handshake, TrendingUp, UsersRound, MessagesSquare, BadgeCheck } from 'lucide-react';
+import { Mail, ArrowUpRight, Target, Telescope, ShieldCheck, Sparkles, Handshake, TrendingUp, UsersRound, MessagesSquare, BadgeCheck } from 'lucide-react';
 import { Reveal } from '../components/Reveal';
 import { company, contactHref } from '../config/company';
 import { about } from '../config/about';
@@ -39,6 +39,17 @@ export default function About() {
     <section className="about-values about-space" aria-labelledby="values-title"><div className="container">
       <Reveal className="about-section-heading"><p className="eyebrow">OUR VALUES</p><h2 id="values-title">The principles that guide us.</h2></Reveal>
       <div className="about-values-grid">{about.values.map((value,i)=>{const Icon=valueIcons[i];return <Reveal key={value.title} delay={i*0.06}><article><Icon size={26} strokeWidth={1.5} aria-hidden="true"/><h3>{value.title}</h3><p>{value.description}</p></article></Reveal>;})}</div>
+    </div></section>
+    <section id="leadership" className="about-leadership about-space" aria-labelledby="leadership-title"><div className="container">
+      <Reveal className="about-section-heading"><p className="eyebrow">OUR PEOPLE</p><h2 id="leadership-title">Meet Our Leadership</h2><p>The people behind our commitment to meaningful connections and professional growth.</p></Reveal>
+      <div className="about-leadership-grid">{about.leadership.map((leader,i)=><Reveal key={leader.email} delay={i*0.08}>
+        <article className="about-leader-card" aria-labelledby={`leader-${i}`}>
+          <div className="about-leader-avatar" aria-hidden="true">{leader.initial}</div>
+          <div className="about-leader-info"><h3 id={`leader-${i}`}>{leader.name}</h3><p className="about-leader-role">{leader.title}</p>
+            <a className="about-leader-email" href={`mailto:${leader.email}`}><Mail size={17} aria-hidden="true"/><span>{leader.email}</span></a>
+          </div>
+        </article>
+      </Reveal>)}</div>
     </div></section>
     <section id="contact" className="about-final about-space" aria-labelledby="about-cta-title"><div className="container"><Reveal><p className="eyebrow">YOUR NEXT CHAPTER</p><h2 id="about-cta-title">Let&#8217;s Build Your Future Together</h2><p>Start a conversation about the people, guidance or opportunities you need.</p><a className="button gold" href={contactHref}>Get in Touch <ArrowUpRight size={17}/></a></Reveal></div></section>
   </div>;

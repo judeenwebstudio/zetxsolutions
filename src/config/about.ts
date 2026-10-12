@@ -4,6 +4,10 @@ export const about = {
   approach: 'Whether you are planning your next hire or exploring your professional development, we start with your needs. Our aim is to offer practical guidance and a thoughtful path forward.',
   mission: 'Our mission is to connect people and businesses through thoughtful staffing, practical consultation and accessible certification guidance.',
   vision: 'Our vision is to help create a future where the right connections give businesses and professionals more opportunities to grow.',
+  leadership: [
+    { name: 'Jegan', title: 'CEO', email: 'jagansada123@gmail.com', initial: 'J' },
+    { name: 'Hema', title: 'HR Manager', email: 'hemamanickam66@gmail.com', initial: 'H' },
+  ],
   values: [
     { title: 'Integrity', description: 'Communicate clearly, act honestly and approach every conversation with respect.' },
     { title: 'Quality', description: 'Give careful attention to the needs, details and decisions that shape each next step.' },
