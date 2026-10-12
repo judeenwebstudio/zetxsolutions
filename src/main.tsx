@@ -1,0 +1,11 @@
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { MotionConfig } from 'motion/react';
+import { Header } from './components/Header';
+import { Hero } from './components/Hero';
+import { Services } from './components/Services';
+import { WhyChooseUs } from './components/WhyChooseUs';
+import { ContactCTA } from './components/ContactCTA';
+import { Footer } from './components/Footer';
+import './styles.css';
+ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><MotionConfig reducedMotion="user"><a className="skip-link" href="#main">Skip to content</a><Header/><main id="main"><Hero/><Services/><WhyChooseUs/><ContactCTA/></main><Footer/></MotionConfig></React.StrictMode>);
