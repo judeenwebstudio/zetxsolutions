@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
+import emailjs from '@emailjs/browser';
+import { sendEnquiry } from '../lib/sendEnquiry';
 import { motion, useReducedMotion } from 'motion/react';
 import { X, MessageCircle, Mail, ArrowUpRight } from 'lucide-react';
 import { company } from '../config/company';
@@ -6,16 +8,16 @@ import { contact, whatsappHref } from '../config/contact';
 import './ContactModal.css';
 
 type FieldErrors = Record<string, string>;
-type Status = 'checking' | 'ready' | 'unavailable' | 'sending' | 'success';
+type Status = 'ready' | 'unavailable' | 'sending' | 'success';
 
 export function ContactModal() {
   const dialog = useRef<HTMLDialogElement>(null);
   const form = useRef<HTMLFormElement>(null);
   const returnFocus = useRef<HTMLElement | null>(null);
-  const controller = useRef<AbortController | null>(null);
+  const sending = useRef(false);
   const startedAt = useRef(Date.now());
   const reduced = useReducedMotion();
-  const [status, setStatus] = useState<Status>('checking');
+  const [status, setStatus] = useState<Status>(contact.emailjsConfigured ? 'ready' : 'unavailable');
   const [error, setError] = useState('');
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
 
@@ -28,20 +30,12 @@ export function ContactModal() {
       if (dialog.current.open) return;
       returnFocus.current = anchor;
       startedAt.current = Date.now();
-      setError(''); setFieldErrors({}); setStatus('checking');
+      setError(''); setFieldErrors({}); setStatus(contact.emailjsConfigured ? 'ready' : 'unavailable');
       form.current?.reset();
       dialog.current.showModal();
-      controller.current?.abort();
-      const abort = new AbortController(); controller.current = abort;
-      fetch('/api/contact', { signal: AbortSignal.any([abort.signal, AbortSignal.timeout(8000)]), cache: 'no-store' })
-        .then(async response => {
-          const data = await response.json();
-          if (!abort.signal.aborted) setStatus(response.ok && data.configured === true ? 'ready' : 'unavailable');
-        })
-        .catch(() => { if (!abort.signal.aborted) setStatus('unavailable'); });
     };
     document.addEventListener('click', open);
-    return () => { document.removeEventListener('click', open); controller.current?.abort(); };
+    return () => { document.removeEventListener('click', open); };
   }, []);
 
   useEffect(() => {
@@ -49,34 +43,27 @@ export function ContactModal() {
   }, [status]);
 
   const close = () => { if (status !== 'sending') dialog.current?.close(); };
-  const onClosed = () => { controller.current?.abort(); if (returnFocus.current?.isConnected) returnFocus.current.focus(); else document.querySelector<HTMLButtonElement>('.menu-button')?.focus(); };
+  const onClosed = () => { if (returnFocus.current?.isConnected) returnFocus.current.focus(); else document.querySelector<HTMLButtonElement>('.menu-button')?.focus(); };
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (status !== 'ready' || !form.current?.reportValidity()) return;
+    if (sending.current || status !== 'ready' || !form.current?.reportValidity()) return;
     const fields = new FormData(form.current);
-    const payload = Object.fromEntries(fields.entries());
+    if (String(fields.get('website') || '').trim() || Date.now() - startedAt.current < 2000) {
+      setError('Please review your enquiry and try again.'); return;
+    }
+    sending.current = true;
     setStatus('sending'); setError(''); setFieldErrors({});
-    const abort = new AbortController(); controller.current = abort;
-    const timeout = window.setTimeout(() => abort.abort(), 15000);
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, signal: abort.signal,
-        body: JSON.stringify({ ...payload, consent: fields.get('consent') === 'on', privacyVersion: contact.privacyVersion, startedAt: startedAt.current }),
-      });
-      const data = await response.json();
-      if (response.ok && data.accepted === true && typeof data.id === 'string' && data.id) {
-        setStatus('success'); form.current?.reset();
-      } else {
-        setStatus(data.code === 'NOT_CONFIGURED' ? 'unavailable' : 'ready');
-        setFieldErrors(data.fields || {});
-        setError(data.error || 'We could not submit your enquiry. Please try again or contact us directly.');
-        window.setTimeout(() => form.current?.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus(), 0);
-      }
-    } catch {
+      await sendEnquiry(fields, contact.emailjs, emailjs.send);
+      setStatus('success'); form.current?.reset();
+    } catch (failure) {
       setStatus('ready');
-      setError('Submission could not be confirmed. Please try again later or contact us directly.');
-    } finally { window.clearTimeout(timeout); }
+      const statusCode = (failure as { status?: number })?.status;
+      setError(statusCode === 429
+        ? 'Too many enquiries. Please wait a moment and try again, or use WhatsApp or email.'
+        : 'Your enquiry could not be confirmed. Please try again later or use WhatsApp or email.');
+    } finally { sending.current = false; }
   }
 
   const fieldError = (name: string) => ({ 'aria-invalid': Boolean(fieldErrors[name]), 'aria-describedby': fieldErrors[name] ? `error-${name}` : undefined });
@@ -95,7 +82,6 @@ export function ContactModal() {
         <a className="button contact-email" href={`mailto:${contact.email}`}><Mail size={16}/>Email us</a>
       </div>
       <p className="contact-address">{contact.email} · +91 78294 22815</p>
-      {status === 'checking' && <p role="status" className="contact-form-status">Checking enquiry availability…</p>}
       {status === 'unavailable' && <p role="status" className="contact-form-status">Online enquiries are not configured yet. Please use WhatsApp or email to get in touch.</p>}
       {status === 'success' ? <div className="contact-success" role="status"><h3>Enquiry accepted</h3><p>Our email provider has accepted your enquiry for delivery. Thank you for contacting ZET X SOLUTIONS.</p><button type="button" className="button gold" onClick={close}>Close</button></div> :
       <form ref={form} onSubmit={submit} aria-busy={status === 'sending'}>
