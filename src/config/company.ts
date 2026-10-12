@@ -1,6 +1,7 @@
+import { contact } from './contact';
 export const company = {
   name: 'ZET X SOLUTIONS',
-  email: '', // Set a verified company email before launch. Never insert a fictitious address.
+  email: contact.email,
   tagline: 'Your growth. Our commitment.',
   intro: 'We connect businesses with the right people through thoughtful staffing, workforce consultation and certification support. Together, we help shape what comes next.',
   services: [
@@ -11,4 +12,4 @@ export const company = {
   benefits: ['Industry Expertise', 'Tailored Solutions', 'Trusted Partnerships', 'Quality Commitment', 'Career Growth'],
 };
 export const navigation = [ ['Home', '#home'], ['About Us', '#about'], ['Services', '#services'], ['Why Choose Us', '#why-us'], ['Contact', '#contact'] ];
-export const contactHref = company.email ? `mailto:${company.email}` : '#contact';
+export const contactHref = '#contact';

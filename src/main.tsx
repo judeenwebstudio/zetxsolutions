@@ -7,5 +7,6 @@ import { Services } from './components/Services';
 import { WhyChooseUs } from './components/WhyChooseUs';
 import { ContactCTA } from './components/ContactCTA';
 import { Footer } from './components/Footer';
+import { ContactModal } from './components/ContactModal';
 import './styles.css';
-ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><MotionConfig reducedMotion="user"><a className="skip-link" href="#main">Skip to content</a><Header/><main id="main"><Hero/><Services/><WhyChooseUs/><ContactCTA/></main><Footer/></MotionConfig></React.StrictMode>);
+ReactDOM.createRoot(document.getElementById('root')!).render(<React.StrictMode><MotionConfig reducedMotion="user"><a className="skip-link" href="#main">Skip to content</a><Header/><main id="main"><Hero/><Services/><WhyChooseUs/><ContactCTA/></main><Footer/><ContactModal/></MotionConfig></React.StrictMode>);

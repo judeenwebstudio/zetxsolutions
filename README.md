@@ -50,3 +50,7 @@ The supplied reference guides the short header, left-aligned hero, three service
 ## Verification
 
 `npm install`, `npm run build` and `npm run typecheck` passed. Browser QA checked desktop at 1536px and mobile at 390px: no horizontal overflow, all anchor targets exist, mobile menu opens and closes on selection, contact disclosure opens, and no browser console errors or warnings were captured. The desktop page measured about 1040px tall against the supplied 1024px reference. Reduced-motion logic was verified in source and loaded CSS; OS preference emulation was unavailable, so it was not dynamically tested. Recheck the configured email and final assets before publishing.
+
+## V1.5 contact modal and serverless enquiries
+
+See [contact setup](docs/contact-setup.md) for current delivery status, the approved privacy notice, secure environment-variable setup, shared rate limiting and tests. The contact email is `Zetxsolutionsofficial@gmail.com`; WhatsApp uses `917829422815`. Earlier placeholder-contact instructions above describe V1.0 and are superseded by this section. The site now includes a Vercel `/api/contact` function; it is not a static-only deployment. No provider secrets belong in the frontend.
