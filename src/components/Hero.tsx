@@ -32,15 +32,15 @@ export function Hero() {
           className="hero-photo"
           src={handshakeMedium}
           srcSet={`${handshakeSmall} 640w, ${handshakeMedium} 1280w, ${handshakeLarge} 1920w`}
-          sizes="(max-width: 700px) 100vw, 56vw"
+          sizes="(max-width: 700px) 100vw, (max-width: 1100px) 65vw, 60vw"
           width={1920}
           height={1080}
           alt=""
           loading="eager"
           fetchPriority="high"
           initial={reduced ? false : { scale: 1 }}
-          animate={{ scale: reduced ? 1 : 1.04 }}
-          transition={{ duration: reduced ? 0 : 16, ease: 'easeInOut' }}
+          animate={{ scale: reduced ? 1 : 1.05 }}
+          transition={{ duration: reduced ? 0 : 18, ease: 'easeInOut' }}
         />
       </motion.div>
       <div className="container hero-inner">

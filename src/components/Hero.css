@@ -1,40 +1,69 @@
-/* Photo layers stay outside document flow so the existing hero dimensions remain intact. */
+/* Match the unchanged header heights without affecting any other section. */
+.hero {
+  --header-height: 72px;
+  min-height: max(560px, calc(100svh - var(--header-height)));
+  display: flex;
+  align-items: center;
+}
+.hero .hero-inner {
+  padding-block: clamp(48px, 7svh, 96px);
+}
+.hero h1 {
+  font-size: clamp(52px, 3.75vw, 72px);
+  line-height: 1.1;
+  letter-spacing: -1.6px;
+}
+.hero .hero-copy {
+  max-width: 470px;
+  font-size: 15px;
+  line-height: 1.7;
+  margin-top: 24px;
+}
+.hero .hero-actions { margin-top: 28px; }
+.hero .eyebrow { margin-bottom: 18px; }
 .hero-visual {
   position: absolute;
-  inset: 0 0 0 44%;
+  inset: 0 0 0 40%;
   overflow: hidden;
   pointer-events: none;
   background: var(--black);
-  mask-image: linear-gradient(90deg, transparent, #000 30%);
+  mask-image: linear-gradient(90deg, transparent, #000 38%);
 }
 .hero-photo {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 48%;
-  transform-origin: 52% 48%;
+  object-position: 51% 48%;
+  transform-origin: 51% 48%;
 }
 .hero-visual::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, #0b0b0d88, #0b0b0d08 40%, #0b0b0d22),
-    linear-gradient(0deg, #0b0b0d44, transparent 35%, #0b0b0d22);
+  background: linear-gradient(90deg, #0b0b0dbb, #0b0b0d10 60%, #0b0b0d22),
+    linear-gradient(0deg, #0b0b0d66, transparent 35%, #0b0b0d33);
 }
-h1 .hero-heading-line {
-  display: inline-block;
-  color: inherit;
+h1 .hero-heading-line { display: inline-block; color: inherit; }
+@media (max-width: 1100px) {
+  .hero h1 { font-size: clamp(40px, 4.7vw, 52px); }
+  .hero .hero-copy { max-width: 410px; }
+  .hero-visual { inset-inline-start: 35%; }
 }
 @media (max-width: 700px) {
-  .hero-visual {
-    inset: 0;
-
-    mask-image: linear-gradient(90deg, transparent, #000 85%);
+  .hero {
+    --header-height: 68px;
+    min-height: calc(100svh - var(--header-height));
   }
-  .hero-photo { object-position: 53% 48%; opacity: 0.45; }
+  .hero .hero-inner { padding-block: 56px; }
+  .hero h1 { font-size: clamp(30px, 7.8vw, 48px); letter-spacing: -0.8px; }
+  .hero .hero-copy { font-size: 14px; max-width: 400px; margin-top: 20px; }
+  .hero .hero-actions { margin-top: 24px; }
+  .hero-visual { inset: 0; mask-image: none; }
+  .hero-photo { object-position: 52% 48%; opacity: 0.6; }
   .hero-visual::after {
-    background: linear-gradient(90deg, #0b0b0de8, #0b0b0d88 60%, #0b0b0d55);
+    background: linear-gradient(90deg, #0b0b0ddd, #0b0b0d77 65%, #0b0b0d44),
+      linear-gradient(0deg, #0b0b0d88, transparent 60%, #0b0b0d44);
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -42,4 +71,3 @@ h1 .hero-heading-line {
   .hero-photo, .hero-heading-line { transform: none !important; }
   .hero-heading-line { opacity: 1 !important; }
 }
-
