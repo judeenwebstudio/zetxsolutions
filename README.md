@@ -54,3 +54,7 @@ The supplied reference guides the short header, left-aligned hero, three service
 ## V1.6 EmailJS enquiries
 
 See [contact setup](docs/contact-setup.md) for public environment variables, EmailJS template configuration and delivery verification. V1.6 supersedes the V1.5 Resend backend; the contact modal now uses EmailJS directly. WhatsApp and direct email remain available.
+
+## V1.8 About page
+
+The dedicated /about page reuses the shared header, footer and contact modal. Company aspirations and values are editable in src/config/about.ts; existing service descriptions remain in src/config/company.ts. No router dependency is required: the page is selected by pathname and loaded separately. Two exact Vercel rewrites support direct refresh of /about and /about/. Homepage anchors are resolved from either page. Run node --test tests/*.test.mjs for contact and navigation checks.

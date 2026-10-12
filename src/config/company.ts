@@ -11,5 +11,5 @@ export const company = {
   ],
   benefits: ['Industry Expertise', 'Tailored Solutions', 'Trusted Partnerships', 'Quality Commitment', 'Career Growth'],
 };
-export const navigation = [ ['Home', '#home'], ['About Us', '#about'], ['Services', '#services'], ['Why Choose Us', '#why-us'], ['Contact', '#contact'] ];
+export const navigation = [ ['Home', '/'], ['About Us', '/about'], ['Services', '#services'], ['Why Choose Us', '#why-us'], ['Contact', '#contact'] ];
 export const contactHref = '#contact';
