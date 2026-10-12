@@ -1,0 +1,38 @@
+.why.why-portrait { padding-block: 32px; }
+.why-portrait-grid {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  min-height: 536px;
+  align-items: stretch;
+}
+.why-content { align-self: center; padding-right: 48px; }
+.why-portrait .section-heading { text-align: left; }
+.why-portrait .benefits { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 24px; margin-top: 36px; }
+.why-portrait .benefit { flex-direction: row; text-align: left; border: 0; gap: 12px; }
+.why-portrait .benefit svg { flex-shrink: 0; }
+.why-portrait .benefit h3 { max-width: none; }
+.why-image { position: relative; overflow: hidden; border-radius: 8px; }
+.why-image picture { display: block; width: 100%; height: 100%; }
+.why-image img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 65% 35%;
+}
+@media (max-width: 1000px) and (min-width: 701px) {
+  .why-content { padding-right: 28px; }
+  .why-portrait .benefits { grid-template-columns: 1fr; gap: 22px; }
+}
+@media (max-width: 700px) {
+  .why.why-portrait { padding-block: 28px; }
+  .why-portrait-grid { grid-template-columns: 1fr; min-height: 0; gap: 28px; }
+  .why-content { padding-right: 0; }
+  .why-portrait .section-heading { text-align: center; }
+  .why-portrait .benefits { gap: 22px 16px; margin-top: 26px; }
+  .why-portrait .benefit { flex-direction: column; text-align: center; }
+  .why-portrait .benefit:last-child { grid-column: 1 / -1; }
+  .why-image { height: 340px; }
+  .why-image img { object-position: 65% 30%; }
+}
