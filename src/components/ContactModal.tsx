@@ -83,12 +83,12 @@ export function ContactModal() {
       <h2 id="enquiry-title">Get in Touch</h2>
       <p id="enquiry-intro">Tell us what you need. Let's explore your next step.</p>
       <div className="contact-direct">
-        <a className="button gold" href={whatsappHref} target="_blank" rel="noopener noreferrer"><MessageCircle size={17}/>Chat on WhatsApp <ArrowUpRight size={15}/></a>
+        <a className="button accent" href={whatsappHref} target="_blank" rel="noopener noreferrer"><MessageCircle size={17}/>Chat on WhatsApp <ArrowUpRight size={15}/></a>
         <a className="button contact-email" href={`mailto:${contact.email}`}><Mail size={16}/>Email us</a>
       </div>
       <p className="contact-address">{contact.email} · +91 78294 22815</p>
       {status === 'unavailable' && <p role="status" className="contact-form-status">Online enquiries are not configured yet. Please use WhatsApp or email to get in touch.</p>}
-      {status === 'success' ? <div className="contact-success" role="status"><h3>Enquiry accepted</h3><p>Our email provider has accepted your enquiry for delivery. Thank you for contacting ZET X SOLUTIONS.</p><button type="button" className="button gold" onClick={close}>Close</button></div> :
+      {status === 'success' ? <div className="contact-success" role="status"><h3>Enquiry accepted</h3><p>Our email provider has accepted your enquiry for delivery. Thank you for contacting ZET X SOLUTIONS.</p><button type="button" className="button accent" onClick={close}>Close</button></div> :
       <form ref={form} onSubmit={submit} aria-busy={status === 'sending'}>
         <fieldset disabled={status === 'sending'}>
           <legend className="contact-form-legend">Send an enquiry</legend>
@@ -103,7 +103,7 @@ export function ContactModal() {
           <details className="contact-privacy"><summary>How we use your details</summary><p>{contact.privacyNotice}</p></details>
           <label className="contact-consent"><input name="consent" type="checkbox" required {...fieldError('consent')}/><span>I agree to the privacy notice and the use of my details to respond to this enquiry.</span></label>{message('consent')}
           {error && <p role="alert" className="contact-field-error">{error}</p>}
-          <button type="submit" className="button gold contact-submit" disabled={status !== 'ready'}>{status === 'sending' ? 'Sending enquiry…' : 'Send Enquiry'}<ArrowUpRight size={16}/></button>
+          <button type="submit" className="button accent contact-submit" disabled={status !== 'ready'}>{status === 'sending' ? 'Sending enquiry…' : 'Send Enquiry'}<ArrowUpRight size={16}/></button>
         </fieldset>
       </form>}
     </motion.div>

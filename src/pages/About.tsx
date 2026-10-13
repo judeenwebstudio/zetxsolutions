@@ -21,7 +21,7 @@ export default function About() {
       <img className="about-hero-image" src={handshake} srcSet={`${handshakeSmall} 640w, ${handshakeMedium} 1280w, ${handshake} 1920w`} sizes="100vw" width="1920" height="1080" fetchPriority="high" alt=""/>
       <div className="container"><Reveal><p className="eyebrow">ABOUT ZET X SOLUTIONS</p>
         <h1 id="about-title">Building Connections.<br/><span>Creating Opportunities.</span></h1>
-        <p className="about-lead">{company.intro}</p><span className="about-gold-line" aria-hidden="true"/>
+        <p className="about-lead">{company.intro}</p><span className="about-accent-line" aria-hidden="true"/>
       </Reveal></div>
     </section>
     <section className="about-who about-space" aria-labelledby="who-title"><div className="container about-split">
@@ -51,6 +51,6 @@ export default function About() {
         </article>
       </Reveal>)}</div>
     </div></section>
-    <section id="contact" className="about-final about-space" aria-labelledby="about-cta-title"><div className="container"><Reveal><p className="eyebrow">YOUR NEXT CHAPTER</p><h2 id="about-cta-title">Let&#8217;s Build Your Future Together</h2><p>Start a conversation about the people, guidance or opportunities you need.</p><a className="button gold" href={contactHref}>Get in Touch <ArrowUpRight size={17}/></a></Reveal></div></section>
+    <section id="contact" className="about-final about-space" aria-labelledby="about-cta-title"><div className="container"><Reveal><p className="eyebrow">YOUR NEXT CHAPTER</p><h2 id="about-cta-title">Let&#8217;s Build Your Future Together</h2><p>Start a conversation about the people, guidance or opportunities you need.</p><a className="button accent" href={contactHref}>Get in Touch <ArrowUpRight size={17}/></a></Reveal></div></section>
   </div>;
 }

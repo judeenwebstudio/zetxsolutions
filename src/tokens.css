@@ -1,0 +1,25 @@
+/* V2.1 centralized color system. Photography and approved raster branding are unchanged. */
+:root {
+  color-scheme: light;
+  --carbon: #0B0D12;
+  --accent: #3979F6;
+  --ice: #E9EFFF;
+  --white: #FFFFFF;
+  --surface-dark: #161C28;
+  --surface-soft: #DDE6FA;
+  --text: #172033;
+  --muted: #526079;
+  --subtle: #AAB7CD;
+  --on-dark-muted: #CDD7EA;
+  --accent-text: #2357B4;
+  --accent-soft: #98BBFF;
+  --accent-hover: #5891FF;
+  --border: #C4D2ED;
+  --input-border: #697894;
+  --focus: #2357B4;
+  --error: #FFB4BA;
+  --mask: #000000;
+  --border-accent: color-mix(in srgb,var(--accent) 55%,transparent);
+  --shadow-card: 0 18px 36px color-mix(in srgb,var(--carbon) 10%,transparent);
+  --gradient-cta: radial-gradient(ellipse at 85% 100%,color-mix(in srgb,var(--accent) 18%,transparent),transparent 65%);
+}

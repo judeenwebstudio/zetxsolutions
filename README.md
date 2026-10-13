@@ -58,3 +58,7 @@ See [contact setup](docs/contact-setup.md) for public environment variables, Ema
 ## V1.8 About page
 
 The dedicated /about page reuses the shared header, footer and contact modal. Company aspirations and values are editable in src/config/about.ts; existing service descriptions remain in src/config/company.ts. No router dependency is required: the page is selected by pathname and loaded separately. Two exact Vercel rewrites support direct refresh of /about and /about/. Homepage anchors are resolved from either page. Run node --test tests/*.test.mjs for contact and navigation checks.
+
+## V2.1 Carbon Black + Electric Blue
+
+All UI color values are centralized in src/tokens.css. Electric Blue is used for accents and CTA surfaces with Carbon Black labels; darker accent-text and lighter accent-soft tokens provide AA text contrast on light and dark surfaces. Original photography is unchanged. The currently approved metallic logo and favicon are raster assets and remain intact. Older SVG logos in public/assets use a different monogram and are retained only as originals; a matching editable source of the final metallic logo is needed for a faithful blue/white variant. No CSS image recoloring filter is applied. The social preview SVG uses the new palette.

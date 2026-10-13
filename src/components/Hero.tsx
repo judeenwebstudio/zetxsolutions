@@ -51,7 +51,7 @@ export function Hero() {
         </h1>
         <Reveal delay={0.16}><p className="hero-copy" id="about">{company.intro}</p></Reveal>
         <Reveal className="hero-actions" delay={0.24}>
-          <a href="#services" className="button gold">Explore Our Services <ArrowRight size={16}/></a>
+          <a href="#services" className="button accent">Explore Our Services <ArrowRight size={16}/></a>
           <a href={contactHref} className="button outline">Get in Touch <ArrowUpRight size={16}/></a>
         </Reveal>
       </div>
