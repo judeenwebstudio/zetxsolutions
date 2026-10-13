@@ -44,7 +44,7 @@ export default function About() {
       <Reveal className="about-section-heading"><p className="eyebrow">OUR PEOPLE</p><h2 id="leadership-title">Meet Our Leadership</h2><p>The people behind our commitment to meaningful connections and professional growth.</p></Reveal>
       <div className="about-leadership-grid">{about.leadership.map((leader,i)=><Reveal key={leader.email} delay={i*0.08}>
         <article className="about-leader-card" aria-labelledby={`leader-${i}`}>
-          <div className="about-leader-avatar" aria-hidden="true">{leader.initial}</div>
+          <div className="about-leader-photo"><img src={`/images/leadership/${leader.portrait}-960.webp`} srcSet={`/images/leadership/${leader.portrait}-480.webp 480w, /images/leadership/${leader.portrait}-960.webp 960w`} sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1200px) calc((100vw - 92px) / 2), 554px" width={960} height={1152} loading="lazy" decoding="async" alt={leader.alt}/></div>
           <div className="about-leader-info"><h3 id={`leader-${i}`}>{leader.name}</h3><p className="about-leader-role">{leader.title}</p>
             <a className="about-leader-email" href={`mailto:${leader.email}`}><Mail size={17} aria-hidden="true"/><span>{leader.email}</span></a>
           </div>

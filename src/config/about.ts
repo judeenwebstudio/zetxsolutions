@@ -5,8 +5,8 @@ export const about = {
   mission: 'Our mission is to connect people and businesses through thoughtful staffing, practical consultation and accessible certification guidance.',
   vision: 'Our vision is to help create a future where the right connections give businesses and professionals more opportunities to grow.',
   leadership: [
-    { name: 'Jegan', title: 'CEO', email: 'jagansada123@gmail.com', initial: 'J' },
-    { name: 'Hemalatha Manickam', title: 'HR Manager', email: 'hemamanickam66@gmail.com', initial: 'H' },
+    { name: 'Jagan Sadashivam', title: 'CEO', email: 'jagansadashivam@gmail.com', portrait: 'jagan-sadashivam', alt: 'Jagan Sadashivam, CEO of ZET X SOLUTIONS, seated in his office' },
+    { name: 'Hemalatha Manickam', title: 'HR Manager', email: 'hemamanickam66@gmail.com', portrait: 'hemalatha-manickam', alt: 'Hemalatha Manickam, HR Manager at ZET X SOLUTIONS, in a professional office portrait' },
   ],
   values: [
     { title: 'Integrity', description: 'Communicate clearly, act honestly and approach every conversation with respect.' },

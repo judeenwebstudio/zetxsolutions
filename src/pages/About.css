@@ -44,17 +44,19 @@
 
 .about-page .about-leadership{background:#fff}
 .about-page .about-leadership-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
-.about-page .about-leader-card{height:100%;display:flex;align-items:center;gap:28px;padding:40px;border:1px solid #c6a56b66;border-radius:16px;background:linear-gradient(135deg,#f5f2ec,#fff);transition:transform .25s,border-color .25s,box-shadow .25s}
-.about-page .about-leader-card:hover,.about-page .about-leader-card:focus-within{transform:translateY(-4px);border-color:#a58550;box-shadow:0 14px 30px #0b0b0d0d}
-.about-page .about-leader-avatar{width:90px;height:90px;flex-shrink:0;display:grid;place-items:center;border:1px solid #c6a56b88;border-radius:50%;background:radial-gradient(circle at 30% 20%,#393126,#0b0b0d 75%);color:#dfc38f;font:40px/1 Georgia,serif}
-.about-page .about-leader-info{min-width:0}
-.about-page .about-leader-info h3{font-size:28px;margin-bottom:7px}
-.about-page .about-leader-info .about-leader-role{font-size:12px;letter-spacing:1.3px;color:#795a28;margin-bottom:18px}
-.about-page .about-leader-email{display:inline-flex;align-items:center;gap:10px;min-height:44px;color:#494744;font-size:13px;line-height:1.5;max-width:100%;text-decoration:underline;text-decoration-color:#c6a56b88;text-underline-offset:5px}
+.about-page .about-leader-card{height:100%;overflow:hidden;display:flex;flex-direction:column;border:1px solid #c6a56b66;border-radius:16px;background:var(--black);transition:transform .25s,border-color .25s,box-shadow .25s}
+.about-page .about-leader-card:hover,.about-page .about-leader-card:focus-within{transform:translateY(-4px);border-color:#c6a56b;box-shadow:0 18px 36px #0b0b0d1a}
+.about-page .about-leader-photo{position:relative;width:100%;aspect-ratio:1;max-height:480px;overflow:hidden;background:#19191c}
+.about-page .about-leader-photo:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,#0b0b0d55,transparent 30%)}
+.about-page .about-leader-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 0%}
+.about-page .about-leader-info{min-width:0;padding:28px 32px 30px;border-top:1px solid #c6a56b66}
+.about-page .about-leader-info h3{font-size:28px;margin-bottom:7px;color:var(--ivory)}
+.about-page .about-leader-info .about-leader-role{font-size:12px;letter-spacing:1.3px;color:#dfc38f;margin-bottom:12px}
+.about-page .about-leader-email{display:inline-flex;align-items:center;gap:10px;min-height:44px;color:#dedad2;font-size:13px;line-height:1.5;max-width:100%;text-decoration:underline;text-decoration-color:#c6a56b88;text-underline-offset:5px}
 .about-page .about-leader-email span{overflow-wrap:anywhere}
-.about-page .about-leader-email svg{flex-shrink:0;margin:0;color:#795a28}
-.about-page .about-leader-email:hover{color:#795a28;text-decoration-color:currentColor}
-.about-page .about-leader-email:focus-visible{outline:3px solid #84632f;outline-offset:5px;border-radius:3px}
-@media(max-width:1000px){.about-page .about-leader-card{padding:28px;gap:20px}.about-page .about-leader-avatar{width:72px;height:72px;font-size:34px}}
-@media(max-width:760px){.about-page .about-leadership-grid{grid-template-columns:1fr;gap:20px}.about-page .about-leader-card{padding:28px 22px;gap:20px;flex-direction:column;text-align:center}.about-page .about-leader-info{width:100%}.about-page .about-leader-info h3{font-size:25px}}
+.about-page .about-leader-email svg{flex-shrink:0;margin:0;color:#dfc38f}
+.about-page .about-leader-email:hover{color:#dfc38f;text-decoration-color:currentColor}
+.about-page .about-leader-email:focus-visible{outline:3px solid #dfc38f;outline-offset:5px;border-radius:3px}
+@media(max-width:1000px){.about-page .about-leader-info{padding:25px}.about-page .about-leader-info h3{font-size:25px}}
+@media(max-width:760px){.about-page .about-leadership-grid{grid-template-columns:1fr;gap:26px;max-width:520px;margin-inline:auto}.about-page .about-leader-info{padding:24px}.about-page .about-leader-info h3{font-size:25px}}
 @media(prefers-reduced-motion:reduce){.about-page .about-leader-card{transition:none!important}.about-page .about-leader-card:hover,.about-page .about-leader-card:focus-within{transform:none}}
