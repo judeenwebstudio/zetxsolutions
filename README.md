@@ -66,3 +66,9 @@ All UI color values are centralized in src/tokens.css. Electric Blue is used for
 ## V2.2 official logo
 
 The supplied blue logo is used losslessly on a white-backed panel, without filters or blend modes. Its original upload is backed up at public/assets/zetx-official-blue-original.png; every previous logo remains intact. Desktop and footer use the full mark with its original tagline. Mobile headers use a crop containing the original symbol and wordmark, omitting the tagline for readability without modifying the source artwork. The desktop header is 112px to accommodate the full logo, and the hero viewport offset matches it. The favicon is a square crop of the original blue Z icon with white padding. Existing brand marks within photography are unchanged.
+
+## V2.3 transparent dark-theme logo
+
+Header and footer now use transparent lossless WebP exports. Ice Blue lettering and tagline and an Electric Blue X are recolored from the original pixel coverage; no fonts, symbols or faces are generated. The icon's opaque internal whites and core colors are preserved; only its exterior white matte is removed and boundary pixels unmatted. All previous source files and the approved favicon are unchanged. Dimensions, responsive compact header variant and header/hero spacing remain as V2.2.
+
+The reproducible local script scripts/prepare-dark-logo.py requires Pillow and numpy (not application dependencies). It validates retained icon pixels and produces docs/branding/v2.3-dark-logo-qa.png for 100%, 150% and 200% inspection against Carbon Black. Source raster resolution remains the quality ceiling; an exact editable source is needed for unlimited scaling.
