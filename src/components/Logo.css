@@ -1,14 +1,6 @@
-.brand-logo {
-  display: block;
-  width: 220px;
-  height: auto;
-  aspect-ratio: 1270 / 355;
-  object-fit: contain;
-  flex-shrink: 0;
-  mix-blend-mode: screen;
-}
-.brand-logo--footer { width: 200px; }
-@media (max-width: 700px) {
-  .brand-logo--header { width: 165px; }
-  .brand-logo--footer { width: 180px; }
-}
+.brand-logo-frame{display:block;flex-shrink:0;background:var(--white);border-radius:4px;overflow:hidden}
+.brand-logo{display:block;width:200px;height:auto;aspect-ratio:423 / 208;object-fit:contain}
+.brand-logo--footer{width:200px}
+/* Keep the original tagline readable; the hero continues to fill the initial viewport. */
+@media(min-width:701px){.header .header-inner{height:112px}body .hero{--header-height:112px}}
+@media(max-width:700px){.brand-logo--header{width:165px;aspect-ratio:423 / 157}.brand-logo--footer{width:200px}}

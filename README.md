@@ -62,3 +62,7 @@ The dedicated /about page reuses the shared header, footer and contact modal. Co
 ## V2.1 Carbon Black + Electric Blue
 
 All UI color values are centralized in src/tokens.css. Electric Blue is used for accents and CTA surfaces with Carbon Black labels; darker accent-text and lighter accent-soft tokens provide AA text contrast on light and dark surfaces. Original photography is unchanged. The currently approved metallic logo and favicon are raster assets and remain intact. Older SVG logos in public/assets use a different monogram and are retained only as originals; a matching editable source of the final metallic logo is needed for a faithful blue/white variant. No CSS image recoloring filter is applied. The social preview SVG uses the new palette.
+
+## V2.2 official logo
+
+The supplied blue logo is used losslessly on a white-backed panel, without filters or blend modes. Its original upload is backed up at public/assets/zetx-official-blue-original.png; every previous logo remains intact. Desktop and footer use the full mark with its original tagline. Mobile headers use a crop containing the original symbol and wordmark, omitting the tagline for readability without modifying the source artwork. The desktop header is 112px to accommodate the full logo, and the hero viewport offset matches it. The favicon is a square crop of the original blue Z icon with white padding. Existing brand marks within photography are unchanged.
